@@ -1,0 +1,15 @@
+To-Do List:
+	Add tasks to me!!
+
+*** Web App ***
+- Add PHP to HTML that reflects real database structure
+- Build results pages
+- Add PHP to transactions page to add more than one type of product at once
+
+*** Database ***
+
+
+*** Query Construction ***
+
+
+*** Report ***
