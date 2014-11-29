@@ -10,6 +10,21 @@ To-Do List:
 
 
 *** Query Construction ***
-
-
+Requirements
+- Browse Products
+	- Search by name
+	- Search by type
+	- Search by price
+- Enter sales transactions
+- Add new inventory
+- Add new users
+	- customer
+	- salesperson
+- Aggregate Queries
+	- Total company sales and profits
+	- Top 5 product categories by sales
+	- Sales by region
+	- Top 3 products by quantity purchased by each business type
+	- Top 10 customers by sales
+	- 
 *** Report ***
