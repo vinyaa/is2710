@@ -7,7 +7,12 @@ To-Do List:
 - Add PHP to transactions page to add more than one type of product at once
 
 *** Database ***
-
+- Create metatable - data about other tables
+- Check Auto-Increment(A_I) box for all primary keys and set A_I initial value according to each table (1000 for Region, 2000 for Store..etc)
+- Set all primary keys
+- Set all foreign keys
+- Set all indexes
+- 
 
 *** Query Construction ***
 Requirements
@@ -15,8 +20,9 @@ Requirements
 	- Search by name (SQL completed)
 	- Search by type (SQL completed)
 	- Search by price (SQL completed)
-- Enter sales transactions (SQL completed)
-- Add new inventory (SQL completed)
+	- Search by product_id (SQL completed)
+- Enter sales transactions ()
+- Add new product (SQL completed)
 - Add new users (SQL completed)
 	- customer (SQL completed)
 	- salesperson (SQL completed)
