@@ -12,7 +12,6 @@ To-Do List:
 - Set all primary keys
 - Set all foreign keys
 - Set all indexes
-- 
 
 *** Query Construction ***
 Requirements
@@ -22,6 +21,7 @@ Requirements
 	- Search by price (SQL completed)
 	- Search by product_id (SQL completed)
 - Enter sales transactions ()
+	- Reject if quantity purchased is less then quantity in inventory
 - Add new product (SQL completed)
 - Add new users (SQL completed)
 	- customer (SQL completed)
@@ -33,4 +33,7 @@ Requirements
 	- Top 3 products by quantity purchased by each business type
 	- Top 10 customers by sales
 	- 
+- Optional Features if there is time to implement
+	- sales of multiple products in one submission
+	
 *** Report ***
