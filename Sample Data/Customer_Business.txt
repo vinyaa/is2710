@@ -1,0 +1,14 @@
+4037,"Business","Academic",50000.00
+4038,"Business","Academic",750000.00
+4039,"Business","Pro Sports",300000.00
+4040,"Business","Pro Sports",10000.00
+4041,"Business","Banking",350000000.00
+4042,"Business","Amateur Sports",15000.00
+4043,"Business","Amateur Sports",125000.00
+4044,"Business","College Sports",80000.00
+4045,"Business","College Sports",254000.00
+4046,"Business","College Sports",25000.00
+4047,"Business","Academic",5000.00
+4048,"Business","Recreational Resort",475000.00
+4049,"Business","Recreational Resort",968000.00
+4050,"Business","Recreational Resort",5000000.00

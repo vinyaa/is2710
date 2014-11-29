@@ -1,0 +1,4 @@
+1001,"North","Jon Snow"
+1002,"South","Cersei Lannister"
+1003,"East","Robb Stark"
+1004,"West","Dany Targaryen"
