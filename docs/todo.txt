@@ -37,3 +37,12 @@ Requirements
 	- sales of multiple products in one submission
 	
 *** Report ***
+- Overview
+- List of Assumptions
+- ER Diagram
+- Relational Schema
+- DDL Statements
+- Normal Form identification and justification
+- Description of front-end and description of front-end to back-end connection
+- Description of testing efforts including error cases that can be detected 
+- Description of system limitations and possible improvements
