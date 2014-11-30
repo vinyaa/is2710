@@ -42,9 +42,12 @@ Requirements
 - ER Diagram (COMPLETED)
 - Relational Schema (COMPLETED)
 - DDL Statements & Normal Forms (COMPLETED)
+- SQL Queries - (although not explicitly stated as a report requirement)
 - Description of front-end and description of front-end to back-end connection
 - Description of testing efforts including error cases that can be detected 
 - Description of system limitations and possible improvements
 	- Limitations
 		- Entering only one product per transaction
-		- 
+	- Improvements
+		- Include ability to show sales growth
+		- Functionality to delete a salesperson or customer
