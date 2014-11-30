@@ -30,7 +30,7 @@ Requirements
 	- Total company sales and profits
 	- Top 5 product categories by sales
 	- Sales by region
-	- Top 3 products by quantity purchased by each business type
+	- Top 3 products by quantity purchased by each business
 	- Top 10 customers by sales
 	- 
 - Optional Features if there is time to implement
