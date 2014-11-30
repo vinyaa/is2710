@@ -16,33 +16,35 @@ To-Do List:
 *** Query Construction ***
 Requirements
 - Browse Products
-	- Search by name (SQL completed)
-	- Search by type (SQL completed)
-	- Search by price (SQL completed)
-	- Search by product_id (SQL completed)
+	- Search by name (SQL COMPLETED)
+	- Search by type (SQL COMPLETED)
+	- Search by price (SQL COMPLETED)
+	- Search by product_id (SQL COMPLETED)
 - Enter sales transactions ()
 	- Reject if quantity purchased is less then quantity in inventory
-- Add new product (SQL completed)
-- Add new users (SQL completed)
-	- customer (SQL completed)
-	- salesperson (SQL completed)
+- Add new product (SQL COMPLETED)
+- Add new users (SQL COMPLETED)
+	- customer (SQL COMPLETED)
+	- salesperson (SQL COMPLETED)
 - Aggregate Queries
 	- Total company sales and profits
 	- Top 5 product categories by sales
 	- Sales by region
 	- Top 3 products by quantity purchased by each business
 	- Top 10 customers by sales
-	- 
+
 - Optional Features if there is time to implement
 	- sales of multiple products in one submission
 	
 *** Report ***
 - Overview
 - List of Assumptions
-- ER Diagram
-- Relational Schema
-- DDL Statements
-- Normal Form identification and justification
+- ER Diagram (COMPLETED)
+- Relational Schema (COMPLETED)
+- DDL Statements & Normal Forms (COMPLETED)
 - Description of front-end and description of front-end to back-end connection
 - Description of testing efforts including error cases that can be detected 
 - Description of system limitations and possible improvements
+	- Limitations
+		- Entering only one product per transaction
+		- 
