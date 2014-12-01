@@ -14,35 +14,46 @@
   }
 ?>
 <?php
-	$max_query = "SELECT MAX(product_id) FROM Product";
-	
-	$max_result = mysqli_query($connection, $max_query);
-	if (!$max_result) {
-		die("Database query failed."); // bad query syntax error
-	}
-	
-	$max_row = mysqli_fetch_assoc($max_result);
-	$max = $max_row["MAX(product_id)"];
-	$new_id = $max + 1;
-?>
-<?php
-	if(isset($_POST['submit'])){
+	if(isset($_POST['search'])){
 		$id = $_POST['product_id'];
-		$name = $_POST['product_name'];
-		$quant = $_POST['quantity'];
-		$price = $_POST['price'];
-		$cost = $_POST['unit_cost'];
-		$type = $_POST['product_type'];
+		$product_query = "SELECT * FROM Product WHERE product_id = $id";
 		
-		$add_cust = "INSERT INTO Product VALUES ('$id', '$name', '$quant', '$price', '$cost', '$type')";
-		
-		$add_result = mysqli_query($connection, $add_cust);
-		if ($add_result) {
-			echo "Successfully added product " . $id; 
-		} else {
-			die("Database query failed. " . mysqli_error($connection));
+		$product_result = mysqli_query($connection, $product_query);
+		if (!$product_result) {
+			die("Database query failed."); // bad query syntax error
 		}
 		
+		$product_row = mysqli_fetch_assoc($product_result);
+		$id = $product_row['product_id'];
+		$name = $product_row['product_name'];
+		$quant = $product_row['quantity'];
+		$price = $product_row['price'];
+		$cost = $product_row['unit_cost'];
+		$type = $product_row['product_type'];
+	}
+?>
+<?php
+	if(isset($_POST['submit'])) {
+		$id2 = $_POST['product_id'];
+		$name2 = $_POST['product_name'];
+		$quant2 = $_POST['quantity'];
+		$price2 = $_POST['price'];
+		$cost2 = $_POST['unit_cost'];
+		$type2 = $_POST['product_type'];
+		
+		$update_query = "UPDATE Product SET product_name = '$name2', quantity = '$quant2', price = '$price2', unit_cost = '$cost2', product_type = '$type2' WHERE product_id = '$id2'";
+		
+		$update_result = mysqli_query($connection, $update_query);
+		
+		echo "Debugging: ";
+		print_r($_POST);
+		
+		if ($update_result) {
+			echo "Success!";
+		} else {
+			print_r($_POST);
+			die("Database query failed. " . mysqli_error($connection));
+		}
 	}
 ?>
 <!DOCTYPE html>
@@ -51,30 +62,30 @@
 	<link rel="stylesheet" type="text/css" href="ricks.css" />
 	<script src="jquery-2.1.0.js"></script>
 	<script src="ricks.js"></script>
-	<title>Add Inventory</title>
+	<title>Edit Inventory</title>
 </head>
 <body>
-	<h2>Add Inventory</h2>
-	<form action="addInv.php" method="post">
+	<h2>Edit Inventory</h2>
+	<form action="editInv.php" method="post">
 		<div>
 			<label for="product_id">Product ID: </label>
-			<input type="text" name="product_id" value="<?php echo $new_id; ?>"/> 
+			<input type="text" name="product_id" value="<?php echo $id;?>" /> 
 		</div>
 		<div>
 			<label for="product_name">Name: </label>
-			<input type="text" name="product_name" />
+			<input type="text" name="product_name" value="<?php echo $name;?>" />
 		</div>
 		<div>
 			<label for="quantity">Quantity: </label>
-			<input type="text" name="quantity" />
+			<input type="text" name="quantity" value="<?php echo $quant;?>" />
 		</div>
 		<div>
 			<label for="price">Price: </label>
-			<input type="text" name="price" />
+			<input type="text" name="price" value="<?php echo $price;?>" />
 		</div>
 		<div>
 			<label for="unit_cost">Unit Cost: </label>
-			<input type="text" name="unit_cost" />
+			<input type="text" name="unit_cost" value="<?php echo $cost;?>" />
 		</div>
 		<div>
 			<label for="product_type">Type: </label>
@@ -90,16 +101,7 @@
 				<option value="volleyball">Volleyball</option>
 			</select>
 		</div>
-		<div><input type="submit" name="submit" value="Submit" /></div>
-	</form>
-	<p>
-		To edit inventory, enter the product ID 
-		below and click "Search"
-	</p>
-	<form action="editInv.php" method="post">
-		<label for="product_id">Product ID: </label>
-		<input type="text" name="product_id" />
-		<input type="submit" name="search" value="Search" />
+		<div><input type="submit" name="submit" value="Submit"></div>
 	</form>
 </body>
 </html>
