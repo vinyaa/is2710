@@ -1,9 +1,9 @@
 <?php
   // 1. Create a database connection
   $dbhost = "localhost";
-  $dbuser = "username"; // your username goes here
-  $dbpass = "password"; // your password goes here
-  $dbname = "database name"; // whatever you called your db on mySQL goes here
+  $dbuser = "username"; // your username here
+  $dbpass = "password"; // your password here
+  $dbname = "database name"; // your database name here
   $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
   // Test if connection succeeded
   if(mysqli_connect_errno()) {
@@ -16,8 +16,9 @@
 <?php
 	if(isset($_POST['search'])){
 		$id = $_POST['customer_id'];
-		$customer_query = "SELECT * FROM Customer WHERE customer_id = $id";
 		
+		// Get customer data from Customer table
+		$customer_query = "SELECT * FROM Customer WHERE customer_id = $id";
 		$customer_result = mysqli_query($connection, $customer_query);
 		if (!$customer_result) {
 			die("Database query failed."); // bad query syntax error
@@ -31,6 +32,51 @@
 		$state = $customer_row['customer_address_state'];
 		$zip = $customer_row['customer_address_zip'];
 		$type = $customer_row['customer_type'];
+		
+		// Prep variables for home/business
+		$marriage = "";
+		$gender = "";
+		$age = "";
+		$home_income = "";
+		$category = "";
+		$business_income = "";
+		
+		// Get customer data from Home or Business table
+		if ($type == 'home') {
+			// Home table
+			$home_query = "SELECT * FROM Customer_Home WHERE customer_id = $id";
+			$home_result = mysqli_query($connection, $home_query);
+			if (!$home_result) {
+				die("Database query failed."); // bad query syntax error
+			}
+			
+			$home_row = mysqli_fetch_assoc($home_result);
+			$marriage = $home_row['marriage_status'];
+			$gender = $home_row['gender'];
+			$age = $home_row['age'];
+			$home_income = $home_row['home_income'];
+		} else {
+			// Business table
+			$business_query = "SELECT * FROM Customer_Business WHERE customer_id = $id";
+			$business_result = mysqli_query($connection, $business_query);
+			if (!$business_result) {
+				die("Database query failed."); // bad query syntax error
+			}
+			
+			$business_row = mysqli_fetch_assoc($business_result);
+			$category = $business_row['business_category'];
+			$business_income = $business_row['business_income'];
+		}
+		
+		// Get customer data from Accounts table
+		$account_query = "SELECT * FROM Accounts WHERE customer_id = $id";
+		$account_result = mysqli_query($connection, $account_query);
+		if (!$account_result) {
+			die("Database query failed."); // bad query syntax error
+		}
+		
+		$account_row = mysqli_fetch_assoc($account_result);
+		$balance = $account_row['balance'];
 	}
 ?>
 <?php
@@ -42,15 +88,50 @@
 		$state2 = $_POST['customer_address_state'];
 		$zip2 = $_POST['customer_address_zip'];
 		$type2 = $_POST['customer_type'];
+		$gender2 = $_POST['gender'];
+		$age2 = $_POST['age'];
+		$home_income2 = $_POST['home_income'];
+		$marriage2 = $_POST['marriage_status'];
+		$category2 = $_POST['business_category'];
+		$business_income2 = $_POST['business_income'];
+		$balance2 = $_POST['balance'];
 		
-		$update_query = "UPDATE Customer SET customer_name = '$name2', customer_address_street = '$street2', customer_address_city = '$city2', customer_address_state = '$state2', customer_address_zip = '$zip2', customer_type = '$type2' WHERE customer_id = '$id2'";
+		// Update Customer Table
+		$update_customer_query = "UPDATE Customer SET customer_name = '$name2', customer_address_street = '$street2', customer_address_city = '$city2', customer_address_state = '$state2', customer_address_zip = '$zip2', customer_type = '$type2' WHERE customer_id = '$id2'";
 		
-		$update_result = mysqli_query($connection, $update_query);
+		$update_customer_result = mysqli_query($connection, $update_customer_query);
 		
-		if ($update_result) {
-			echo "Success!";
+		if ($update_customer_result) {
+			echo "Successfully updated customer " . $id2 . "; ";
 		} else {
-			print_r($_POST);
+			die("Database query failed. " . mysqli_error($connection));
+		}
+		
+		// Update Home/Business Table
+		if ($type2 == 'home') {
+			$update_home_query = "UPDATE Customer_Home SET marriage_status = '$marriage2', gender = '$gender2', age = '$age2', home_income = '$home_income2' WHERE customer_id = '$id2'";
+			$update_home_result = mysqli_query($connection, $update_home_query);
+			if ($update_home_result) {
+				echo "Successfully updated home customer " . $id2 . "; ";
+			} else {
+				die("Database query failed. " . mysqli_error($connection));
+			}
+		} else {
+			$update_business_query = "UPDATE Customer_Business SET business_category = '$category2', business_income = '$business_income2' WHERE customer_id = '$id2'";
+			$update_business_result = mysqli_query($connection, $update_business_query);
+			if ($update_business_result) {
+				echo "Successfully updated business customer " . $id2 . "; ";
+			} else {
+				die("Database query failed. " . mysqli_error($connection));
+			}
+		}
+		
+		// Update Account
+		$update_account_query = "UPDATE Accounts SET balance = '$balance2'";
+		$update_account_result = mysqli_query($connection, $update_account_query);
+		if ($update_account_result) {
+			echo "Successfully updated account #" . $id2;
+		} else {
 			die("Database query failed. " . mysqli_error($connection));
 		}
 	}
@@ -59,8 +140,8 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="ricks.css" />
-	<script src="jquery-2.1.0.js"></script>
-	<script src="ricks.js"></script>
+	<script src="js/jquery-2.1.0.js"></script>
+	<script src="js/ricks.js"></script>
 	<title>Edit Customer</title>
 </head>
 <body>
@@ -92,9 +173,28 @@
 				<option value="business">Business</option>
 			</select>
 		</div>
-		<div>
-			add some divs here to include type specific information
+		<div id="home"<?php if ($type == 'business') {echo ' style="display:none"';}?>>
+			<label for="gender">Gender: </label>
+			<input type="text" name="gender" value="<?php echo $gender;?>" /><br/>
+			<label for="age">Age: </label>
+			<input type="text" name="age" value="<?php echo $age;?>" /><br/>
+			<label for="home_income">Yearly Income: </label>
+			<input type="text" name="home_income" value="<?php echo $home_income;?>" /><br/>
+			<label for="marriage_status">Marital Status: </label>
+			<input type="text" name="marriage_status" value="<?php echo $marriage;?>" />
 		</div>
+		<div id="business"<?php if ($type == 'home') {echo ' style="display:none"';}?>>
+			<label for="business_category">Type of Business: </label>
+			<input type="text" name="business_category" value="<?php echo $category;?>" /><br/>
+			<label for="business_income">Yearly Income: </label>
+			<input type="text" name="business_income" value="<?php echo $business_income;?>" />
+		</div>
+		<p>Account Information:</p>
+		<div>
+			<label for="balance">Balance: </label>
+			<input type="text" name="balance" value="<?php echo $balance;?>">
+		</div>
+		<br/>
 		<div><input type="submit" name="submit" value="Submit" /></div>
 	</form>
 </body>
