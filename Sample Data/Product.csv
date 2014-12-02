@@ -1,1 +1,31 @@
-product_id,product_name,quantity,price,unit_cost,product_type7001,soccer ball,3,10,5,soccer7002,football,6,11,6,football7003,basketball,9,12,7,basketball7004,volleyball,8,13,8,volleyball7005,baseball,7,5,2,baseball7006,bike,4,670,400,cycling7007,bike helmet,5,25,13,cycling7008,ski helmet,2,50,25,skiing7009,football helmet,5,80,50,football7010,soccer shoes,8,60,50,soccer7011,football shoes,9,60,50,football7012,bicycle shoes,6,75,60,cycling7013,ski boots,3,150,100,skiing7014,bike tires,1,20,15,cycling7015,hockey stick,2,66,56,hockey7016,hockey puck,5,2,1,hockey7017,hockey skates,4,45,30,hockey7018,hockey helmet,8,30,20,hockey7019,tennis racquet,9,145,110,tennis7020,tennis ball,6,2,1,tennis7021,hockey gloves,58,55,30,hockey7022,soccer shin guards,2,14,8,soccer7023,football gloves,1,12,8,football7024,basketball hoop,4,250,150,basketball7025,hockey goal,3,65,35,hockey7026,soccer goal,3,60,30,soccer7027,volleyball net,2,30,28,volleyball7028,baseball bat,4,95,90,baseball7029,baseball glove,4,55,50,baseball7030,batting helmet,2,72,60,baseball
+product_id,product_name,quantity,price,unit_cost,product_type
+7001,soccer ball,3,10,5,soccer
+7002,football,6,11,6,football
+7003,basketball,9,12,7,basketball
+7004,volleyball,8,13,8,volleyball
+7005,baseball,7,5,2,baseball
+7006,bike,4,670,400,cycling
+7007,bike helmet,5,25,13,cycling
+7008,ski helmet,2,50,25,skiing
+7009,football helmet,5,80,50,football
+7010,soccer shoes,8,60,50,soccer
+7011,football shoes,9,60,50,football
+7012,bicycle shoes,6,75,60,cycling
+7013,ski boots,3,150,100,skiing
+7014,bike tires,1,20,15,cycling
+7015,hockey stick,2,66,56,hockey
+7016,hockey puck,5,2,1,hockey
+7017,hockey skates,4,45,30,hockey
+7018,hockey helmet,8,30,20,hockey
+7019,tennis racquet,9,145,110,tennis
+7020,tennis ball,6,2,1,tennis
+7021,hockey gloves,58,55,30,hockey
+7022,soccer shin guards,2,14,8,soccer
+7023,football gloves,1,12,8,football
+7024,basketball hoop,4,250,150,basketball
+7025,hockey goal,3,65,35,hockey
+7026,soccer goal,3,60,30,soccer
+7027,volleyball net,2,30,28,volleyball
+7028,baseball bat,4,95,90,baseball
+7029,baseball glove,4,55,50,baseball
+7030,batting helmet,2,72,60,baseball
