@@ -1,9 +1,9 @@
 <?php
   // 1. Create a database connection
   $dbhost = "localhost";
-  $dbuser = "username"; // your username goes here
-  $dbpass = "password"; // your password goes here
-  $dbname = "database name"; // whatever you called your db on mySQL goes here
+  $dbuser = "username"; // your username here
+  $dbpass = "password"; // your password here
+  $dbname = "database name"; // your database name here
   $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
   // Test if connection succeeded
   if(mysqli_connect_errno()) {
@@ -11,6 +11,16 @@
          mysqli_connect_error() . 
          " (" . mysqli_connect_errno() . ")"
     );
+  }
+  if(isset($_POST['login'])){
+  	  $login_id = $_POST['emp_id'];
+	  $login_query = "SELECT emp_id FROM Employees WHERE emp_id = '$login_id'";
+	  $login_result = mysqli_query($connection, $login_query);
+	  if (!$login_result) {
+		  die("Database query failed."); // bad query syntax
+	  } else if (mysqli_num_rows($login_result) != 1) {
+		  header("Location: bad_login.php");
+	  }
   }
 ?>
 <?php

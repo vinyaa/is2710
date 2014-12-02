@@ -1,9 +1,9 @@
 <?php
   // 1. Create a database connection
   $dbhost = "localhost";
-  $dbuser = "username"; // your username goes here
-  $dbpass = "password"; // your password goes here
-  $dbname = "database name"; // whatever you called your db on mySQL goes here
+  $dbuser = "username"; // your username here
+  $dbpass = "password"; // your password here
+  $dbname = "database name"; // your database name here
   $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
   // Test if connection succeeded
   if(mysqli_connect_errno()) {

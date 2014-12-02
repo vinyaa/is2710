@@ -1,9 +1,9 @@
 <?php
   // 1. Create a database connection
   $dbhost = "localhost";
-  $dbuser = "username"; // your username goes here
-  $dbpass = "password"; // your password goes here
-  $dbname = "database name"; // whatever you called your db on mySQL goes here
+  $dbuser = "username"; // your username here
+  $dbpass = "password"; // your password here
+  $dbname = "database name"; // your database name here
   $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
   // Test if connection succeeded
   if(mysqli_connect_errno()) {
@@ -75,22 +75,46 @@
 		if ($update_sales_result) {
 			echo "Successfully updated salesperson " . $id;
 		} else {
-			print_r($_POST);
 			die("Database query failed. " . mysqli_error($connection));
 		}
 		
+	}
+?>
+<?php
+	if(isset($_POST['delete'])){
+		print_r($_POST);
+		$delete_id = $_POST['delete_id'];
+		echo $delete_id;
+	
+		// Delete from Employees table
+		$delete_emp_query = "DELETE FROM Employees WHERE emp_id = '$delete_id'";
+		$delete_emp_result = mysqli_query($connection, $delete_emp_query);
+		if ($delete_emp_result) {
+			echo "Successfully deleted employee #" . $delete_id . "; ";
+		} else {
+			die("Database query failed. " . mysqli_error($connection));
+		}
+		
+		// Delete from Salesperson table
+		$delete_sales_query = "DELETE FROM Salesperson WHERE emp_id = '$delete_id'";
+		$delete_sales_result = mysqli_query($connection, $delete_sales_query);
+		if ($delete_sales_result) {
+			echo "Successfully deleted salesperson #" . $delete_id;
+		} else {
+			die("Database query failed. " . mysqli_error($connection));
+		} 
 	}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="ricks.css" />
-	<script src="jquery-2.1.0.js"></script>
-	<script src="ricks.js"></script>
-	<title>Edit User</title>
+	<script src="js/jquery-2.1.0.js"></script>
+	<script src="js/ricks.js"></script>
+	<title>Edit Employee</title>
 </head>
 <body>
-	<h2>Add Employee</h2>
+	<h2>Edit Employee</h2>
 	<form action="editUser.php" method="post">
 		<p>
 			Employee Details: 
@@ -141,7 +165,12 @@
 		<div><input type="submit" name="submit" value="Submit"></div>
 	</form>
 	<form action="editUser.php" method="post">
-		<input type="submit" name="delete_user" value="Delete User">
+		<p>Please retype Employee ID to confirm Delete. This action is PERMANENT.</p>
+		<div>
+			<label for="delete_id">Delete ID: </label>
+			<input type="text" name="delete_id" />
+		</div>
+		<input type="submit" name="delete" value="Delete User">
 	</form>
 </body>
 </html>
