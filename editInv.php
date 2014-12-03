@@ -3,7 +3,7 @@
   $dbhost = "localhost";
   $dbuser = "username"; // your username here
   $dbpass = "password"; // your password here
-  $dbname = "database name"; // your database name here
+  $dbname = "database name"; // your db name here
   $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
   // Test if connection succeeded
   if(mysqli_connect_errno()) {
@@ -65,6 +65,12 @@
 	<title>Edit Inventory</title>
 </head>
 <body>
+	<header>
+		<h3 style="display:inline">Rick's Sports</h3>&nbsp;&nbsp;
+		<a href="customers.php">Customer Interface</a>&nbsp;&nbsp;
+		<a href="data.php">Data Aggregation</a>&nbsp;&nbsp;
+		<a href="employees.php">Employee Login</a>&nbsp;&nbsp;
+	</header>
 	<h2>Edit Inventory</h2>
 	<form action="editInv.php" method="post">
 		<div>
@@ -90,15 +96,15 @@
 		<div>
 			<label for="product_type">Type: </label>
 			<select name="product_type">
-				<option value="baseball">Baseball</option>
-				<option value="basketball">Basketball</option>
-				<option value="cycling">Cycling</option>
-				<option value="football">Football</option>
-				<option value="hockey">Hockey</option>
-				<option value="skiing">Skiing</option>
-				<option value="soccer">Soccer</option>
-				<option value="tennis">Tennis</option>
-				<option value="volleyball">Volleyball</option>
+				<option value="baseball"<?php echo ($type == 'baseball') ? 'selected="selected"': '';?>>Baseball</option>
+				<option value="basketball"<?php echo ($type == 'basketball') ? 'selected="selected"': '';?>>Basketball</option>
+				<option value="cycling"<?php echo ($type == 'cycling') ? 'selected="selected"': '';?>>Cycling</option>
+				<option value="football"<?php echo ($type == 'football') ? 'selected="selected"': '';?>>Football</option>
+				<option value="hockey"<?php echo ($type == 'hockey') ? 'selected="selected"': '';?>>Hockey</option>
+				<option value="skiing"<?php echo ($type == 'skiing') ? 'selected="selected"': '';?>>Skiing</option>
+				<option value="soccer"<?php echo ($type == 'soccer') ? 'selected="selected"': '';?>>Soccer</option>
+				<option value="tennis"<?php echo ($type == 'tennis') ? 'selected="selected"': '';?>>Tennis</option>
+				<option value="volleyball"<?php echo ($type == 'volleyball') ? 'selected="selected"': '';?>>Volleyball</option>
 			</select>
 		</div>
 		<div><input type="submit" name="submit" value="Submit"></div>

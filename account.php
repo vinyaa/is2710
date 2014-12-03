@@ -3,7 +3,7 @@
   $dbhost = "localhost";
   $dbuser = "username"; // your username here
   $dbpass = "password"; // your password here
-  $dbname = "database name"; // your database name here
+  $dbname = "database name"; // your db name here
   $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
   // Test if connection succeeded
   if(mysqli_connect_errno()) {
@@ -51,6 +51,12 @@
 	<title>Customer Account</title>
 </head>
 <body>
+	<header>
+		<h3 style="display:inline">Rick's Sports</h3>&nbsp;&nbsp;
+		<a href="customers.php">Customer Interface</a>&nbsp;&nbsp;
+		<a href="data.php">Data Aggregation</a>&nbsp;&nbsp;
+		<a href="employees.php">Employee Login</a>&nbsp;&nbsp;
+	</header>
 	<h2>Account for Customer <?php echo $id;?>:</h2>
 	<form action="account.php" method="post">
 		<div>
